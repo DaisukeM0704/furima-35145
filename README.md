@@ -13,8 +13,7 @@
 ### Association
 - has_many   :items
 - has_many   :comments
-- belongs_to :purchase_management
-- belongs_to :shipping_address
+- has_many   :purchase_management
 
 ## items テーブル
 
@@ -30,25 +29,23 @@
 | user             | references | foreign_key: true |
 
 ### Association
-- has_one    :shipping_address
+- has_one    :purchase_management
 - has_many   :comments
 - belongs_to :users
-- belongs_to :purchase_management
 
 ## shipping_address テーブル
 
-| Column         | Type       | Options           |
-| postal_cord    | string     | null: false       |
-| prefectures_id | integer    | null: false       |
-| municipality   | string     | null: false       |
-| house_number   | string     | null: false       |
-| building_name  | string     |                   |
-| phone_number   | string     | null: false       |
-| user           | references | foreign_key: true |
+| Column              | Type       | Options           |
+| postal_cord         | string     | null: false       |
+| prefectures_id      | integer    | null: false       |
+| municipality        | string     | null: false       |
+| house_number        | string     | null: false       |
+| building_name       | string     |                   |
+| phone_number        | string     | null: false       |
+| purchase_management | references | foreign_key: true |
 
 ### Association
-- belongs_to :users
-- belongs_to :items
+- belongs_to :purchase_management
 
 ## purchase_management テーブル
 
@@ -57,8 +54,9 @@
 | item   | references | foreign_key: true |
 
 ### Association
-- has_many :users
-- has_many :items
+- belongs_to :users
+- belongs_to :items
+- belongs_to :shipping_address
 
 ## comments テーブル
 
