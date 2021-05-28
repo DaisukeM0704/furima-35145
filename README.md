@@ -13,7 +13,7 @@
 ### Association
 - has_many   :items
 - has_many   :comments
-- has_many   :purchase_management
+- has_many   :purchase_managements
 
 ## items テーブル
 
@@ -31,7 +31,7 @@
 ### Association
 - has_one    :purchase_management
 - has_many   :comments
-- belongs_to :users
+- belongs_to :user
 
 ## shipping_address テーブル
 
@@ -54,8 +54,8 @@
 | item   | references | foreign_key: true |
 
 ### Association
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
 - belongs_to :shipping_address
 
 ## comments テーブル
@@ -65,5 +65,5 @@
 | item | references | foreign_key: true |
 
 ### Association
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
