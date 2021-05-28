@@ -54,9 +54,9 @@
 | item   | references | foreign_key: true |
 
 ### Association
+- has_one :shipping_address
 - belongs_to :user
 - belongs_to :item
-- belongs_to :shipping_address
 
 ## comments テーブル
 
