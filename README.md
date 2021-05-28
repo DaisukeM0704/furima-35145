@@ -1,24 +1,69 @@
-# README
+## users テーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column             | Type   | Options                   |
+| nickname           | string | null: false               |
+| email              | string | unique: true, null: false |
+| encrypted_password | string | null: false               |
+| first_name         | string | null: false               |
+| last_name          | string | null: false               |
+| first_name_kana    | string | null: false               |
+| last_name_kana     | string | null: false               |
+| birthday           | date   | null: false               |
 
-Things you may want to cover:
+### Association
+- has_many   :items
+- has_many   :comments
+- has_many   :purchase_managements
 
-* Ruby version
+## items テーブル
 
-* System dependencies
+| Column           | Type       | Options           |
+| name             | string     | null: false       |
+| introduction     | text       | null: false       |
+| price            | integer    | null: false       |
+| category_id      | integer    | null: false       |
+| condition_id     | integer    | null: false       |
+| cost_id          | integer    | null: false       |
+| prefecture_id   | integer    | null: false       |
+| delivery_time_id | integer    | null: false       |
+| user             | references | foreign_key: true |
 
-* Configuration
+### Association
+- has_one    :purchase_management
+- has_many   :comments
+- belongs_to :user
 
-* Database creation
+## shipping_address テーブル
 
-* Database initialization
+| Column              | Type       | Options           |
+| postal_cord         | string     | null: false       |
+| prefecture_id      | integer    | null: false       |
+| municipality        | string     | null: false       |
+| house_number        | string     | null: false       |
+| building_name       | string     |                   |
+| phone_number        | string     | null: false       |
+| purchase_management | references | foreign_key: true |
 
-* How to run the test suite
+### Association
+- belongs_to :purchase_management
 
-* Services (job queues, cache servers, search engines, etc.)
+## purchase_management テーブル
 
-* Deployment instructions
+| Column | Type       | Options           |
+| user   | references | foreign_key: true |
+| item   | references | foreign_key: true |
 
-* ...
+### Association
+- has_one :shipping_address
+- belongs_to :user
+- belongs_to :item
+
+## comments テーブル
+
+| text | text       | null: false       |
+| user | references | foreign_key: true |
+| item | references | foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :item
