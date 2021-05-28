@@ -24,7 +24,7 @@
 | category_id      | integer    | null: false       |
 | condition_id     | integer    | null: false       |
 | cost_id          | integer    | null: false       |
-| prefectures_id   | integer    | null: false       |
+| prefecture_id   | integer    | null: false       |
 | delivery_time_id | integer    | null: false       |
 | user             | references | foreign_key: true |
 
@@ -37,7 +37,7 @@
 
 | Column              | Type       | Options           |
 | postal_cord         | string     | null: false       |
-| prefectures_id      | integer    | null: false       |
+| prefecture_id      | integer    | null: false       |
 | municipality        | string     | null: false       |
 | house_number        | string     | null: false       |
 | building_name       | string     |                   |
