@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to :user
     has_one :order
-    has_one_attached :image
+    has_many_attached :images
     belongs_to_active_hash :category
     belongs_to_active_hash :condition
     belongs_to_active_hash :cost
@@ -10,7 +10,7 @@ class Item < ApplicationRecord
     belongs_to_active_hash :delivery_time
   
   with_options presence: true do
-    validates :image
+    validates :images
     validates :name
     validates :introduction
     validates :price, format: { with: /\A[0-9]+\z/, message: "is invalid. Input half-width characters." }, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }

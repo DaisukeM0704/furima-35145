@@ -1,27 +1,39 @@
 document.addEventListener('DOMContentLoaded', function(){
   if ( document.getElementById("item-image")){
-    const ImageList = document.getElementById("image-list");
+    const ImageList = document.getElementById("image-list")
 
     const createImageHTML = (blob) => {
-      const imageElement = document.createElement('div');
+      const imageElement = document.createElement('div')
+      imageElement.setAttribute('class', "image-element")
+      let imageElementNum = document.querySelectorAll('.image-element').length
 
-      const blobImage = document.createElement('img');
-      blobImage.setAttribute('src', blob);
+      const blobImage = document.createElement('img')
+      blobImage.setAttribute('src', blob)
 
-      imageElement.appendChild(blobImage);
-      ImageList.appendChild(imageElement);
-    };
+      const inputHTML = document.createElement('input')
+      inputHTML.setAttribute('id', `item-image_${imageElementNum}`)
+      inputHTML.setAttribute('name', 'item[images][]')
+      inputHTML.setAttribute('type', 'file')
 
-    document.getElementById("item-image").addEventListener('change', function(e){
-      const imageContent = document.querySelector('img');
-      if (imageContent){
-        imageContent.remove();
-      }
+      imageElement.appendChild(blobImage)
+      imageElement.appendChild(inputHTML)
+      ImageList.appendChild(imageElement)
 
-      const file = e.target.files[0];
-      const blob = window.URL.createObjectURL(file);
+      inputHTML.addEventListener('change', (e) => {
+        file = e.target.files[0];
+        blob = window.URL.createObjectURL(file);
 
-      createImageHTML(blob);
+        createImageHTML(blob)
+      })
+    }
+
+    document.getElementById("item-image").addEventListener('change', (e) => {
+
+      let file = e.target.files[0];
+      let blob = window.URL.createObjectURL(file);
+
+      createImageHTML(blob)
+      
     });
   }
 });

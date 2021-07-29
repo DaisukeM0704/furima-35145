@@ -9,7 +9,7 @@ ja:
         last_name_kana: 名のフリガナ
         first_name_kana: 姓のフリガナ
       item:
-        image: 商品画像
+        images: 商品画像
         name: 商品名
         introduction: 商品の説明
         category_id: カテゴリー
