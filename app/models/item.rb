@@ -4,6 +4,8 @@ class Item < ApplicationRecord
     has_one :order
     has_many_attached :images
     has_many :comments, dependent: :destroy
+    has_many :item_tag_relations
+    has_many :tags, through: :item_tag_relations
     belongs_to_active_hash :category
     belongs_to_active_hash :condition
     belongs_to_active_hash :cost
